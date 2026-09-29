@@ -1,16 +1,31 @@
-# Safe Tools - Week 6 Assignment
 
-def safe_divide():
+
+def safe_divide(a, b):
     try:
-        first = float(input("Enter the first number: "))
-        second = float(input("Enter the second number: "))
-        result = first / second
-        print("Result:", result)
-    except ValueError:
-        print("Error: Please enter numbers only.")
+        return a / b
     except ZeroDivisionError:
-        print("Error: Cannot divide by zero.")
+        return "Cannot divide by zero"
 
 
-safe_divide()
+def safe_number(text):
+    try:
+        return int(text)
+    except ValueError:
+        return "Not a number"
 
+
+def get_field(learner, key):
+    try:
+        return learner[key]
+    except KeyError:
+        return "Field not found"
+
+
+print(safe_divide(10, 2))
+print(safe_divide(10, 0))
+print(safe_number("42"))
+print(safe_number("abc"))
+
+learner = {"name": "Amina", "score": 82}
+print(get_field(learner, "score"))
+print(get_field(learner, "email"))
